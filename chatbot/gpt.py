@@ -23,10 +23,10 @@ def chat_with_gpt4():
             break
 
         response = openai.Completion.create(
-            engine="text-davinci-002",  # Using text-davinci-002
+            engine="text-davinci-003",  # Using text-davinci-002 
             prompt=f"{personality_prompt}\n\nUtilisateur: {user_input}\nD3sir3:",
             max_tokens=500,
         )
         chatbot_response = response.choices[0].text.strip()
 
-        print("Assistant-Social:", chatbot_response)
+        print("D3sir3:", chatbot_response)

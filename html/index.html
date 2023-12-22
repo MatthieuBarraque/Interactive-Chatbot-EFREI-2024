@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function submitQuestion() {
+            var question = document.getElementById('question').value;
+            $.ajax({
+                url: 'http://localhost:5000/get_answer',
+                type: 'post',
+                contentType: 'application/json',
+                data: JSON.stringify({ 'question': question }),
+                success: function(response) {
+                    document.getElementById('answer').innerText = response.answer;
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Chatbot</h1>
+    <form onsubmit="event.preventDefault(); submitQuestion();">
+        <label for="question">Posez votre question :</label><br>
+        <input type="text" id="question" name="question"><br>
+        <input type="submit" value="Envoyer">
+    </form>
+    <p id="answer"></p>
+</body>
+</html>
