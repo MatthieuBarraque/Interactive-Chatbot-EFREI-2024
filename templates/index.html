@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ChatBot Interface</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        .chat-container { width: 100%; max-width: 700px; margin: 50px auto; background: #f7f7f7; border-radius: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        .chat-header { background: #4b9ad4; color: #fff; padding: 15px; border-radius: 5px 5px 0 0; text-align: center; }
+        .chat-messages { height: 400px; overflow-y: scroll; padding: 10px; background: #fff; }
+        .chat-input { padding: 15px; display: flex; border-top: 1px solid #ddd; }
+        .chat-input input { flex-grow: 1; padding: 10px; border-radius: 2px; border: 1px solid #ddd; }
+        .chat-input button { background: #4b9ad4; color: #fff; padding: 10px 15px; border: none; border-radius: 2px; margin-left: 5px; cursor: pointer; }
+        .chat-input button:hover { background: #3a82b1; }
+        .chat-input {
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top: 1px solid #ddd; 
+        }
+        header {
+        background-color: #3a82b1;
+        padding: 5px;
+        border-radius: 5px;
+        width: 100%; /* réduit la largeur à 100% de la largeur du conteneur parent */
+        margin: 20px auto; /* ajoute une marge supérieure de 50px et centre le cadre horizontalement */
+        text-align: center; /* centre le texte */
+        font-family: Arial, sans-serif; /* change la police d'écriture */
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            background-color: #4b9ad4;
+            color: white;
+            text-align: center;
+        }
+        @media (min-width: 768px) {
+            header {
+                width: 50%;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>Challenges Web - Chatbot</h1>
+    </header>
+
+    <main>
+        <div class="chat-container">
+            <div class="chat-header">ChatBot</div>
+            <div id="chat-messages" class="chat-messages">
+            </div>
+            <div class="chat-input">
+                <form id="chat-form" onsubmit="sendMessage(event)">
+                    <input type="text" id="user-input" name="user_input" placeholder="Tapez un message..." autocomplete="off">
+                    <button id="send-button" type="submit">Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="info-section"> 
+            <p>Efrei 2023 <a href="#">Web Challenges</a> 🚀</p> 
+        </div>
+    </footer>
+
+    <script>
+        async function sendMessage(event) { // Fonction appelée lors de l'envoi du formulaire
+            event.preventDefault(); // Empêche l'envoi du formulaire 
+            const userInput = document.getElementById('user-input').value;
+            if (!userInput.trim()) return; // Ne rien faire si l'input est vide ou ne contient que des espaces
+
+            const response = await fetch('/chatbot', { // Envoi de la requête au serveur
+                method: 'POST', // Méthode POST
+                headers: { // En-têtes HTTP
+                    'Content-Type': 'application/json' // Type de contenu JSON
+                },  // Corps de la requête
+                body: JSON.stringify({ user_input: userInput }) // Conversion de l'objet JS en JSON
+            }); // Récupération de la réponse du serveur
+            const data = await response.json(); // Conversion de la réponse en objet JS
+            const chatMessages = document.getElementById('chat-messages'); // Récupération de la div des messages
+            chatMessages.innerHTML += `<div class="user-message"><span>Vous:</span> ${userInput}</div>`; // Ajout du message de l'utilisateur
+            chatMessages.innerHTML += `<div class="chatbot-message"><span>DR. Désiré : </span> ${data.response}</div>`; // Ajout du message du chatbot
+            document.getElementById('user-input').value = ''; // Réinitialisation de l'input
+            chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll automatique vers le bas
+        } // Fonction appelée lors de l'envoi du formulaire
+        document.addEventListener('DOMContentLoaded', () => { // Ecouteur d'événement sur le chargement de la page
+            const chatForm = document.getElementById('chat-form'); // Récupération du formulaire
+            chatForm.addEventListener('submit', sendMessage); // Ecouteur d'événement sur l'envoi du formulaire
+        }); // Fonction appelée lors du chargement de la page
+    </script> 
+
+</body>
+</html>
