@@ -5,9 +5,8 @@ app = Flask(__name__)
 
 # Fonction pour obtenir la clé API d'OpenAI depuis un fichier
 def get_api_key_from_file():
-    with open('C:\\Users\\matth\\OneDrive\\Cours-EFREI\\Challenge_Web\\Web_Project-EFREI\\chatbot\\key.txt', 'r') as file:
-        api_key = file.read().strip()
-    return api_key
+    openai.api_key = "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"
+    return openai.api_key
 
 # Initialisation de la clé API d'OpenAI
 openai.api_key = get_api_key_from_file()
@@ -29,7 +28,7 @@ def chat_with_gpt4():
     if user_input.lower() == 'exit':
         return jsonify({'response': "Au revoir!"})
 
-    with open('C:\\Users\\matth\\OneDrive\\Cours-EFREI\\Challenge_Web\\Web_Project-EFREI\\chatbot\\prompt.txt', 'r') as file:
+    with open('../prompt.txt', 'r') as file:
         personality_prompt = file.read().strip()
 
     response = openai.Completion.create(
