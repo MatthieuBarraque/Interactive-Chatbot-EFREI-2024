@@ -27,5 +27,61 @@
             <button id="chatButton">Commencer</button>
         </a>
     </div>
+
+    <div id="transparent-rectangle"></div>
+
+    <style>
+        #transparent-rectangle {
+            position: absolute;
+            left: 40;
+            width: 30%; /* Adjust as needed */
+            height: 80%; /* Adjust as needed */
+            top : 110px;
+            background-color: rgba(255, 255, 255, 0.5); /* White with 50% opacity */
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <div style="width: 25%; float: right; position: relative; top: 120px; right: 60px;">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['adulte', 'ado', 'retraité'],
+                datasets: [{
+                    data: [25 , 65, 10],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)', // rouge , bleu ciel = rgba(54, 162, 235, 0.2)
+                        'rgba(54, 162, 235, 0.2)', // bleu
+                        'rgba(255, 206, 86, 0.2)' // jaune
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)', // rouge
+                        'rgba(54, 162, 235, 1)', // bleu
+                        'rgba(255, 206, 86, 1)' // jaune
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'pourcentage de personnes par age qui souffrent de dépression'
+                    }
+                }
+            },
+        });
+    </script>
+
 </body>
 </html>
