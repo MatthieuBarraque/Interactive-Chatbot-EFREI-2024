@@ -1,0 +1,63 @@
+body {
+    background: url('https://cdn.discordapp.com/attachments/1187755454550515742/1187798464252362933/estudiante-exitoso-1.png?ex=65983286&is=6585bd86&hm=b941db8b93d914d795239e697f90f8aba80e8c1ed445b2a98c62dc5932fe4437&');
+    background-size: cover;
+    color: rgb(0, 0, 0);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+#welcome-message {
+position: absolute;
+bottom: 450px;
+width: 100%;
+text-align: center;
+}
+#connection-icon {
+position: absolute;
+top: 10px;
+right: 10px;
+font-size: 48px;
+}
+#signup, #connection {
+position: absolute;
+top: 10px;
+text-align: center;
+}
+#signup {
+    right: 120px;
+}
+
+#connection {
+    right: 10px;
+}
+
+#signup i, #connection i {
+    font-size: 48px;
+}
+
+#signup p, #connection p {
+    margin: 0;
+}
+#chatButton {
+display: inline-block;
+padding: 10px 20px;
+font-size: 16px;
+cursor: pointer;
+background-color: #4CAF50;
+color: #fff;
+border: none;
+border-radius: 5px;
+}
+
+#zoneChat {
+    display: none;
+}
+
+#zoneReponses {
+    margin-top: 10px;
+}
+@media (max-width: 600px) {
+    #signup i, #connection i {
+        font-size: 24px;
+    }
+}

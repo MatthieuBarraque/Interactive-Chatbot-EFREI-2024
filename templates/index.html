@@ -101,7 +101,7 @@
             const data = await response.json(); // Conversion de la réponse en objet JS
             const chatMessages = document.getElementById('chat-messages'); // Récupération de la div des messages
             chatMessages.innerHTML += `<div class="user-message"><span>Vous:</span> ${userInput}</div>`; // Ajout du message de l'utilisateur
-            chatMessages.innerHTML += `<div class="chatbot-message"><span>DR. Désiré : </span> ${data.response}</div>`; // Ajout du message du chatbot
+            chatMessages.innerHTML += `<div class="chatbot-message"><span>DR.Désiré : </span> ${data.response}</div>`; // Ajout du message du chatbot
             document.getElementById('user-input').value = ''; // Réinitialisation de l'input
             chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll automatique vers le bas
         } // Fonction appelée lors de l'envoi du formulaire
