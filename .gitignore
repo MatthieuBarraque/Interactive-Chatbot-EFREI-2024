@@ -1,4 +1,5 @@
 # .gitignore
 key.txt
-gpt.py
-app.py
+/chatbot
+/node_modules
+```

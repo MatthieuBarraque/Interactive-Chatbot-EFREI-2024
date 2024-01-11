@@ -19,3 +19,5 @@ app.get('/connexion', (req, res) => {
 app.listen(5001, () => {
     console.log('Server is running on http://127.0.0.1:5001');
 });
+
+//le langage de programmation utilisé est le javascript
