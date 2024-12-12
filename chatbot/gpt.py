@@ -1,7 +1,7 @@
 import openai
 
 def get_api_key_from_file():
-    with open('C:\\Users\\matth\\OneDrive\\Cours-EFREI\\Challenge_Web\\Web_Project-EFREI\\chatbot\\key.txt', 'r') as file:
+    with open('chatbot\\key.txt', 'r') as file:
         #remplacer le chemin par le votre
         api_key = file.read().strip()
     return api_key
@@ -12,7 +12,7 @@ def chat_with_gpt4():
 
     print("Tapez 'exit' pour quitter.\n")
 
-    with open('C:\\Users\\matth\\OneDrive\\Cours-EFREI\\Challenge_Web\\Web_Project-EFREI\\chatbot\\prompt.txt', 'r') as file:
+    with open('chatbot\\prompt.txt', 'r') as file:
         #remplacer le chemin par le votre
         personality_prompt = file.read().strip()
 
